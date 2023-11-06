@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: devfile-sample-go-basic-5ew5
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: devfile-sample-go-basic-5ew5
+    app.kubernetes.io/part-of: my-app-2
+  name: devfile-sample-go-basic-5ew5
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: go-app
+      app.kubernetes.io/instance: devfile-sample-go-basic-5ew5
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: go-app
+        app.kubernetes.io/instance: devfile-sample-go-basic-5ew5
+    spec:
+      containers:
+      - image: quay.io/redhat-user-workloads-stage/abhindas-tenant/my-app-2/devfile-sample-go-basic-5ew5@sha256:689a563deab6d3c1a5f76f75f98e50a69dcff7bfc315076997f9a56d8c1f324f
+        name: my-go
+        ports:
+        - containerPort: 8081
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 10m
+            memory: 10Mi
+status: {}
